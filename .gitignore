@@ -8,3 +8,4 @@ node_modules/
 dist/
 *.tmp
 *.cjs
+stitch_os_core_visualizer/
