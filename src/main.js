@@ -57,7 +57,7 @@ function renderApp() {
         </nav>
         <div class="sidebar-footer">
           <button class="sidebar-link-btn" type="button" data-module-id="home">
-            <span aria-hidden="true">📖</span> Documentation
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10M6 10h10"/></svg> Documentation
           </button>
         </div>
       </aside>

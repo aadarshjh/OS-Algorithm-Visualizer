@@ -194,7 +194,7 @@ function renderVisualizeOutput(selectedAlgorithm, showMetrics) {
         ${renderPlaybackControls(state.playback)}
       </section>
     ` : `
-      ${renderReadyPlaceholder("CPU Scheduling", "⏱️")}
+      ${renderReadyPlaceholder("CPU Scheduling", "cpu")}
     `}
 
     ${showMetrics ? `
@@ -213,7 +213,7 @@ function renderVisualizeOutput(selectedAlgorithm, showMetrics) {
 
 function renderCompareOutput() {
   if (!state.comparisonResult) {
-    return renderReadyPlaceholder("Comparison", "📊");
+    return renderReadyPlaceholder("Comparison", "comparison");
   }
 
   const results = state.comparisonResult;

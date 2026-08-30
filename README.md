@@ -1,9 +1,13 @@
 # Operating Systems Algorithm Visualizer
 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-GitHub_Pages-4b41e1?style=for-the-badge&logo=github)](https://aadarshjh.github.io/OS-Algorithm-Visualizer/)
+
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
 ![Tests](https://img.shields.io/badge/tests-68%20passed-success)
 ![No Dependencies](https://img.shields.io/badge/dependencies-0-blue)
 ![JavaScript](https://img.shields.io/badge/language-Vanilla_JS-yellow)
+
+> **Live Application:** [https://aadarshjh.github.io/OS-Algorithm-Visualizer/](https://aadarshjh.github.io/OS-Algorithm-Visualizer/)
 
 An interactive, textbook-accurate educational platform designed to help computer science students visualize, step through, and compare how core Operating System algorithms execute.
 

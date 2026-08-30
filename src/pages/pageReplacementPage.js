@@ -155,7 +155,7 @@ function renderVisualizeOutput(showMetrics) {
         ${renderPlaybackControls(state.playback)}
       </section>
     ` : `
-      ${renderReadyPlaceholder("Page Replacement", "📄")}
+      ${renderReadyPlaceholder("Page Replacement", "page")}
     `}
 
     ${showMetrics ? `
@@ -172,7 +172,7 @@ function renderVisualizeOutput(showMetrics) {
 
 function renderCompareOutput() {
   if (!state.comparisonResult) {
-    return renderReadyPlaceholder("Comparison", "📊");
+    return renderReadyPlaceholder("Comparison", "comparison");
   }
 
   const results = state.comparisonResult;

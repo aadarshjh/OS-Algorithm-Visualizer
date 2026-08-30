@@ -865,8 +865,47 @@ tbody tr:hover {
 }
 
 .ready-placeholder-icon {
-  font-size: 40px;
-  margin-bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--secondary);
+  margin-bottom: 16px;
+  background: var(--surface);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+}
+
+.status-badge.success {
+  background: var(--success-bg);
+  color: #166534;
+  border: 1px solid rgba(22, 163, 74, 0.25);
+}
+
+.status-badge.pending {
+  background: var(--surface-container);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+.status-badge.danger {
+  background: var(--danger-bg);
+  color: #991b1b;
+  border: 1px solid rgba(186, 26, 26, 0.25);
 }
 
 .ready-placeholder h3 {

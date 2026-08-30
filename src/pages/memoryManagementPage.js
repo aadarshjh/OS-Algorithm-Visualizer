@@ -144,7 +144,7 @@ function renderVisualizeOutput(showMetrics) {
         ${renderPlaybackControls(state.playback)}
       </section>
     ` : `
-      ${renderReadyPlaceholder("Memory Management", "🗄️")}
+      ${renderReadyPlaceholder("Memory Management", "memory")}
     `}
 
     ${showMetrics ? `
@@ -161,7 +161,7 @@ function renderVisualizeOutput(showMetrics) {
 
 function renderCompareOutput() {
   if (!state.comparisonResult) {
-    return renderReadyPlaceholder("Comparison", "📊");
+    return renderReadyPlaceholder("Comparison", "comparison");
   }
 
   const results = state.comparisonResult;

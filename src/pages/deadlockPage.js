@@ -158,7 +158,7 @@ function renderBankersOutput() {
   const s = state.bankers;
   if (!s.result) {
     return `
-      ${renderReadyPlaceholder("Deadlock Management", "🔒")}
+      ${renderReadyPlaceholder("Deadlock Management", "deadlock")}
     `;
   }
 
@@ -191,7 +191,7 @@ function renderBankersOutput() {
         <td>${s.allocation[i].join(" ")}</td>
         <td>${s.max[i].join(" ")}</td>
         <td>${needMatrix[i].join(" ")}</td>
-        <td>${finished[i] ? '✅' : '❌'}</td>
+        <td>${finished[i] ? '<span class="status-badge success">Finished</span>' : '<span class="status-badge pending">Pending</span>'}</td>
       </tr>
     `;
   }
@@ -234,10 +234,10 @@ function renderBankersOutput() {
         </div>
         <div class="status-banner ${s.result.isSafe ? 'safe' : 'unsafe'}">
           ${s.result.isSafe ? `
-            <strong>✅ System is in a SAFE state</strong>
+            <strong>System is in a SAFE state</strong>
             <p>Safe Sequence: ${s.result.safeSequence.join(" &rarr; ")}</p>
           ` : `
-            <strong>❌ System is in an UNSAFE state</strong>
+            <strong>System is in an UNSAFE state</strong>
             <p>A safe sequence could not be found for all processes.</p>
           `}
         </div>
@@ -250,9 +250,8 @@ function renderBankersOutput() {
           <div><p class="eyebrow">Result</p><h2>Resource Request Status</h2></div>
         </div>
         <div class="status-banner ${s.requestResult.granted ? 'safe' : 'unsafe'}">
-          <strong>${s.requestResult.granted ? 'Request GRANTED' : 'Request DENIED'}</strong>
-          <p>${s.requestResult.reason}</p>
-          ${s.requestResult.granted && s.requestResult.safetyResult ? `<p>Safe Sequence: ${s.requestResult.safetyResult.safeSequence.join(" &rarr; ")}</p>` : ""}
+          <strong>${s.requestResult.granted ? "Request Can Be Granted Immediately" : "Request Cannot Be Granted"}</strong>
+          <p>${s.requestResult.reason || (s.requestResult.granted ? `Safe sequence with requested resources: ${s.requestResult.safetyResult.safeSequence.join(" &rarr; ")}` : "")}</p>
         </div>
       </section>
     ` : ""}
@@ -263,29 +262,15 @@ function renderDetectionOutput() {
   const s = state.detection;
   if (!s.result) {
     return `
-      ${renderReadyPlaceholder("Deadlock Management", "🔒")}
+      ${renderReadyPlaceholder("Deadlock Detection", "deadlock")}
     `;
   }
 
   const showMetrics = s.playback.currentStep >= s.playback.totalSteps;
-  
-  let currentWork = [...s.available];
-  // Initial finish status (no resources = true)
-  let finished = Array(s.numProcesses).fill(false);
-  for (let i = 0; i < s.numProcesses; i++) {
-    const hasResources = s.allocation[i].some(v => v > 0);
-    if (!hasResources) finished[i] = true;
-  }
-  
-  let activeProcessIndex = -1;
-
-  for (let i = 0; i < s.playback.currentStep; i++) {
-    const step = s.result.steps[i];
-    currentWork = [...step.workAfter];
-    const pIndex = parseInt(step.process.substring(1));
-    finished[pIndex] = true;
-    if (i === s.playback.currentStep - 1) activeProcessIndex = pIndex;
-  }
+  const currentStepData = s.result.steps[s.playback.currentStep] || s.result.steps[s.result.steps.length - 1];
+  const finished = currentStepData.finished;
+  const currentWork = currentStepData.work;
+  const activeProcessIndex = currentStepData.processIndex;
 
   let visualRows = "";
   for (let i = 0; i < s.numProcesses; i++) {
@@ -299,7 +284,7 @@ function renderDetectionOutput() {
         <td>P${i}</td>
         <td>${s.allocation[i].join(" ")}</td>
         <td>${s.request[i].join(" ")}</td>
-        <td>${finished[i] ? '✅' : '❌'}</td>
+        <td>${finished[i] ? '<span class="status-badge success">Finished</span>' : '<span class="status-badge pending">Pending</span>'}</td>
       </tr>
     `;
   }
@@ -341,10 +326,10 @@ function renderDetectionOutput() {
         </div>
         <div class="status-banner ${s.result.hasDeadlock ? 'unsafe' : 'safe'}">
           ${s.result.hasDeadlock ? `
-            <strong>❌ Deadlock Detected!</strong>
+            <strong>Deadlock Detected</strong>
             <p>Deadlocked Processes: ${s.result.deadlockedProcesses.join(", ")}</p>
           ` : `
-            <strong>✅ No Deadlock Detected</strong>
+            <strong>No Deadlock Detected</strong>
             <p>All processes can complete successfully.</p>
           `}
         </div>
