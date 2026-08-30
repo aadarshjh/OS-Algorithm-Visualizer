@@ -325,6 +325,9 @@ button:disabled {
   text-align: left;
   font-size: 13px;
   color: var(--text-muted);
+  text-decoration: none;
+  box-sizing: border-box;
+  cursor: pointer;
   display: flex;
   align-items: center;
   gap: 8px;
