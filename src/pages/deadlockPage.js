@@ -67,9 +67,9 @@ export function renderDeadlockPage() {
           <button class="secondary-button" type="button" data-action="reset">Reset</button>
         </div>
 
-        <div class="tabs">
-          <button class="tab ${state.activeTab === 'bankers' ? 'active' : ''}" type="button" data-action="switch-tab" data-tab="bankers">Banker's Algorithm</button>
-          <button class="tab ${state.activeTab === 'detection' ? 'active' : ''}" type="button" data-action="switch-tab" data-tab="detection">Deadlock Detection</button>
+        <div class="mode-tabs">
+          <button class="mode-tab ${state.activeTab === 'bankers' ? 'active' : ''}" type="button" data-action="switch-tab" data-tab="bankers">Banker's Algorithm</button>
+          <button class="mode-tab ${state.activeTab === 'detection' ? 'active' : ''}" type="button" data-action="switch-tab" data-tab="detection">Deadlock Detection</button>
         </div>
         
         ${renderExplanationCard(state.activeTab, "deadlock")}
