@@ -19,8 +19,8 @@ export function renderHomePage(modules) {
   return `
     <div class="home-page-container">
       <header class="home-header">
-        <h1>Operating Systems Algorithm Visualizer</h1>
-        <p class="subtitle">Understand how OS algorithms make decisions, one step at a time.</p>
+        <h1>OScope</h1>
+        <p class="subtitle">Operating Systems Algorithm Visualizer</p>
         <p class="description">Configure textbook workloads, run simulations, step through playback, and compare algorithm trade-offs using the same tested calculation engine.</p>
         <div class="home-actions">
           <button class="primary-button" type="button" data-module-id="cpu">Start Visualizing</button>

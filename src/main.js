@@ -28,7 +28,7 @@ function renderApp() {
       <header class="app-topbar">
         <button class="topbar-brand" type="button" data-module-id="home" aria-label="Go to Home">
           <span class="topbar-mark" aria-hidden="true">OS</span>
-          <span>OS VizPro</span>
+          <span>OScope</span>
         </button>
         <nav class="topbar-nav" aria-label="Quick Navigation">
           <button type="button" data-module-id="home" class="${activeModuleId === "home" ? "active" : ""}">Home</button>

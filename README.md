@@ -1,4 +1,4 @@
-# Operating Systems Algorithm Visualizer
+# OScope — Operating Systems Algorithm Visualizer
 
 [![Live Demo](https://img.shields.io/badge/Live_Demo-GitHub_Pages-4b41e1?style=for-the-badge&logo=github)](https://aadarshjh.github.io/OS-Algorithm-Visualizer/)
 
